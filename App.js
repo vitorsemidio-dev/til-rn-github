@@ -6,35 +6,8 @@
  * @flow strict-local
  */
 
-import React, {Component} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
-
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-export default class App extends Component {
-  render() {
-    return (
-      <>
-      <View style={styles.container}>
-        <Text style={styles.welcome}>React Native</Text>
-      </View>
-      </>
-    );
-  }
-}
+import React from 'react';
+import { StyleSheet, View, Text } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -48,3 +21,11 @@ const styles = StyleSheet.create({
     margin: 10,
   },
 });
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.welcome}>React Native</Text>
+    </View>
+  );
+}

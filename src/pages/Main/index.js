@@ -3,7 +3,19 @@ import { Keyboard } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import api from '../../services/api';
-import { Container, Form, Input, SubmitButton } from './styles';
+import {
+  List,
+  Container,
+  Form,
+  Input,
+  SubmitButton,
+  User,
+  Avatar,
+  Name,
+  Bio,
+  ProfileButton,
+  ProfileButtonText,
+} from './styles';
 
 Icon.loadFont();
 
@@ -52,6 +64,22 @@ export default class Main extends Component {
             <Icon name="add" size={20} color="#FFF" />
           </SubmitButton>
         </Form>
+
+        <List
+          data={users}
+          keyExtractor={(user) => user.login}
+          renderItem={({ item: user }) => (
+            <User>
+              <Avatar source={{ uri: user.avatar }} />
+              <Name>{user.name}</Name>
+              <Bio>{user.bio}</Bio>
+
+              <ProfileButton onPress={() => {}}>
+                <ProfileButtonText>Ver Perfil</ProfileButtonText>
+              </ProfileButton>
+            </User>
+          )}
+        />
       </Container>
     );
   }

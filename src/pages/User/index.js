@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Text } from 'react-native';
 import api from '../../services/api';
 
-import { Container, Header, Avatar, Name, Bio, Repos, Repo, RepoName, Language, LinkRepo } from './styles';
+import {
+  Container,
+  Header,
+  Avatar,
+  Name,
+  Bio,
+  Repos,
+  Repo,
+  RepoName,
+  Language,
+} from './styles';
 
 export default class User extends Component {
   static propTypes = {
@@ -12,15 +21,15 @@ export default class User extends Component {
     }).isRequired,
     route: PropTypes.shape({
       params: PropTypes.shape({
-        user: PropTypes.object
-      })
-    }).isRequired
-  }
+        user: PropTypes.object,
+      }),
+    }).isRequired,
+  };
 
   state = {
     repos: [],
     user: {},
-  }
+  };
 
   async componentDidMount() {
     this.navigationOptions(this.props);
@@ -33,7 +42,7 @@ export default class User extends Component {
   }
 
   navigationOptions({ navigation, route }) {
-    const { user } = route.params
+    const { user } = route.params;
     navigation.setOptions({ title: user.name });
     console.tron.log(this.props);
   }
@@ -50,12 +59,11 @@ export default class User extends Component {
 
         <Repos
           data={repos}
-          keyExtractor={repo => String(repo.id)}
+          keyExtractor={(repo) => String(repo.id)}
           renderItem={({ item: repo }) => (
             <Repo>
               <RepoName>{repo.name}</RepoName>
               <Language>{repo.language}</Language>
-              <LinkRepo>{repo.html_url}</LinkRepo>
             </Repo>
           )}
         />

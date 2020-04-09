@@ -35,13 +35,36 @@ export const Bio = styled.Text`
   text-align: center;
 `;
 
-export const Repos = styled.View``;
+export const Repos = styled.FlatList.attrs({
+  showsVerticalScrollIndicator: false,
+})`
+  margin-top: 20px;
+`;
 
-export const Repo = styled.View``;
+export const Repo = styled.View`
+  background: #222;
+  border-radius: 4px;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  flex-direction: row;
+  align-items: center;
+`;
 
-export const RepoName = styled.View``;
+export const RepoName = styled.Text`
+  font-size: 15px;
+  font-weight: bold;
+  color: #7159c1;
+  text-transform: uppercase;
+  margin-right: 15px;
+`;
 
-export const Language = styled.View``;
+export const Language = styled.Text`
+  font-size: 13px;
+  color: #fff;
+  margin-top: 2px;
+`;
 
-export const LinkRepo = styled.View``;
-
+export const LinkRepo = styled.Text`
+  font-size: 10px;
+  color: #00f;
+`;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Text } from 'react-native';
 import api from '../../services/api';
 
-import { Container } from './styles';
+import { Container, Header, Avatar, Name, Bio, Repos, Repo, RepoName, Language, LinkRepo } from './styles';
 
 export default class User extends Component {
   static propTypes = {
@@ -19,6 +19,7 @@ export default class User extends Component {
 
   state = {
     repos: [],
+    user: {},
   }
 
   async componentDidMount() {
@@ -28,7 +29,7 @@ export default class User extends Component {
 
     const response = await api.get(`/users/${user.login}/repos`);
 
-    this.setState({ repos: response.data });
+    this.setState({ repos: response.data, user });
   }
 
   navigationOptions({ navigation, route }) {
@@ -38,10 +39,26 @@ export default class User extends Component {
   }
 
   render() {
-    const { repos } = this.state;
+    const { repos, user } = this.state;
     return (
       <Container>
-        <Text>User</Text>
+        <Header>
+          <Avatar source={{ uri: user.avatar }} />
+          <Name>{user.name}</Name>
+          <Bio>{user.bio}</Bio>
+        </Header>
+
+        <Repos
+          data={repos}
+          keyExtractor={repo => String(repo.id)}
+          renderItem={({ item: repo }) => (
+            <Repo>
+              <RepoName>{repo.name}</RepoName>
+              <Language>{repo.language}</Language>
+              <LinkRepo>{repo.html_url}</LinkRepo>
+            </Repo>
+          )}
+        />
       </Container>
     );
   }

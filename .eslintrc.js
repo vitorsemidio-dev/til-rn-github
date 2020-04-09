@@ -36,6 +36,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'react/prefer-stateless-function': 'off',
     'react/state-in-constructor': 'off',
-    'prettier/prettier': 'off'
+    'prettier/prettier': 'off',
+    'react/static-property-placement': 'off'
   },
 };

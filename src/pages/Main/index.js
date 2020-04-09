@@ -1,8 +1,9 @@
 import React from 'react';
-
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { Container, Form, Input, SubmitButton } from './styles';
+
+Icon.loadFont();
 
 export default function Main() {
   return (
